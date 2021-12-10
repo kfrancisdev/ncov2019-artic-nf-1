@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #source ~/env/bin/activate
 
 # ont_artic_test

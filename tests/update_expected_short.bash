@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 tests="ont_artic_short
 ont_viridian_short

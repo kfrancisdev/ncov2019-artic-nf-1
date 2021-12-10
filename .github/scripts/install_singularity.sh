@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -eo pipefail
 
 echo Install Singularity dependencies.. >> artifacts/test_artifact.log
