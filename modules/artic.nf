@@ -214,10 +214,7 @@ process getObjFilesONT {
 		--auth instance_principal \
 		--prefix $filePrefix
 
-	if [ $? -ne 0 ]
-	then
-	    echo '[ERROR] oci os object bulk-download failed'
-	fi
+	echo "bulk-download returned $?"
 	
 	kraken2 -db ${db} \
 		--memory-mapping \
@@ -225,10 +222,7 @@ process getObjFilesONT {
 		--output ${prefix}_read_classification \
         	${filePrefix}**.fastq.gz 
 
-	if [ $? -ne 0 ]
-	then
-	    echo '[ERROR] kraken2 failed'
-	fi
+	echo "kraken returned $?"
 	
 	echo "Doing ll"
 	
