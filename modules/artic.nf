@@ -214,17 +214,19 @@ process getObjFilesONT {
 		--auth instance_principal \
 		--prefix $filePrefix
 		
-	echo "Doing ls"
-	
+	echo "Doing ls after bulk-download"	
 	ls -R ./
-	
-	echo "finished ls"
+	echo "finished ls after bulk-download"
 	
 	kraken2 -db ${db} \
 		--memory-mapping \
 		--report ${prefix}_summary.txt \
 		--output ${prefix}_read_classification \
         	${filePrefix}**.fastq.gz 
+	
+	echo "Doing ls after kraken2"	
+	ls -R ./
+	echo "finished ls after kraken2"
 	
         awk '\$3==\"9606\" { print \$2 }' ${prefix}_read_classification >> kraken2_human_read_list
         awk '\$3!=\"9606\" { print \$2 }' ${prefix}_read_classification >> kraken2_nonhuman_read_list
