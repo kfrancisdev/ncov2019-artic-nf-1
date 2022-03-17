@@ -216,7 +216,7 @@ process getObjFilesONT {
 		
 	echo "Doing ls"
 	
-	ls ./
+	ls -R ./
 	
 	echo "finished ls"
 	
