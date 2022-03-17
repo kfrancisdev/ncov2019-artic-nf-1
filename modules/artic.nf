@@ -213,8 +213,6 @@ process getObjFilesONT {
 		--overwrite \
 		--auth instance_principal \
 		--prefix $filePrefix
-
-	echo "bulk-download returned $?"
 	
 	kraken2 -db ${db} \
 		--memory-mapping \
@@ -222,8 +220,6 @@ process getObjFilesONT {
 		--output ${prefix}_read_classification \
         	${filePrefix}**.fastq.gz 
 
-	echo "kraken returned $?"
-	
 	echo "Doing ll"
 	
 	ll
