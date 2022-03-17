@@ -213,6 +213,12 @@ process getObjFilesONT {
 		--overwrite \
 		--auth instance_principal \
 		--prefix $filePrefix
+		
+	echo "Doing ls"
+	
+	ls ./
+	
+	echo "finished ls"
 	
 	kraken2 -db ${db} \
 		--memory-mapping \
@@ -220,11 +226,11 @@ process getObjFilesONT {
 		--output ${prefix}_read_classification \
         	${filePrefix}**.fastq.gz 
 
-	echo "Doing ll"
+	echo "Doing ls"
 	
-	ll
+	ls
 	
-	echo "finished ll"
+	echo "finished ls"
 	
         awk '\$3==\"9606\" { print \$2 }' ${prefix}_read_classification >> kraken2_human_read_list
         awk '\$3!=\"9606\" { print \$2 }' ${prefix}_read_classification >> kraken2_nonhuman_read_list
