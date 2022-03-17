@@ -228,6 +228,10 @@ process getObjFilesONT {
 	ls -R ./
 	echo "finished ls after kraken2"
 	
+	echo "kraken2 Summary"	
+	cat ${prefix}_summary.txt
+	echo "end kraken2 Summary"	
+	
         awk '\$3==\"9606\" { print \$2 }' ${prefix}_read_classification >> kraken2_human_read_list
         awk '\$3!=\"9606\" { print \$2 }' ${prefix}_read_classification >> kraken2_nonhuman_read_list
 
