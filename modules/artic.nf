@@ -225,12 +225,6 @@ process getObjFilesONT {
 		--report ${prefix}_summary.txt \
 		--output ${prefix}_read_classification \
         	${filePrefix}**.fastq.gz 
-
-	echo "Doing ls"
-	
-	ls
-	
-	echo "finished ls"
 	
         awk '\$3==\"9606\" { print \$2 }' ${prefix}_read_classification >> kraken2_human_read_list
         awk '\$3!=\"9606\" { print \$2 }' ${prefix}_read_classification >> kraken2_nonhuman_read_list
