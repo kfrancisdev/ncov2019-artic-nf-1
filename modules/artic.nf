@@ -205,6 +205,8 @@ process getObjFilesONT {
     script:
 	db=params.krakdb
         """
+	echo "debug message - bucket: ${bucket} prefix: ${prefix} fileprefix: ${filePrefix}"
+	
 	oci os object bulk-download \
 		-bn $bucket \
 		--download-dir ./ \
@@ -212,12 +214,28 @@ process getObjFilesONT {
 		--auth instance_principal \
 		--prefix $filePrefix
 
+	if [ $? -ne 0 ]
+	then
+	    echo '[ERROR] oci os object bulk-download failed'
+	fi
+	
 	kraken2 -db ${db} \
 		--memory-mapping \
 		--report ${prefix}_summary.txt \
 		--output ${prefix}_read_classification \
         	${filePrefix}**.fastq.gz 
 
+	if [ $? -ne 0 ]
+	then
+	    echo '[ERROR] kraken2 failed'
+	fi
+	
+	echo "Doing ll"
+	
+	ll
+	
+	echo "finished ll"
+	
         awk '\$3==\"9606\" { print \$2 }' ${prefix}_read_classification >> kraken2_human_read_list
         awk '\$3!=\"9606\" { print \$2 }' ${prefix}_read_classification >> kraken2_nonhuman_read_list
 
