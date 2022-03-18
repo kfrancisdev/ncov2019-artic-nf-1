@@ -215,7 +215,7 @@ process getObjFilesONT {
 		--prefix $filePrefix
 		
 	echo "Doing ls after bulk-download"	
-	ls -R ./
+	ls -l -R ./
 	echo "finished ls after bulk-download"
 	
 	kraken2 -db ${db} \
@@ -225,7 +225,7 @@ process getObjFilesONT {
         	${filePrefix}**.fastq.gz 
 	
 	echo "Doing ls after kraken2"	
-	ls -R ./
+	ls -l -R ./
 	echo "finished ls after kraken2"
 	
 	echo "kraken2 Summary"	
