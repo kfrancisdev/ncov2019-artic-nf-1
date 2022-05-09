@@ -1,7 +1,7 @@
 #!/usr/bin/env nextflow
 
 // enable dsl2
-nextflow.enable.dsl=2
+nextflow.enable.dsl=1
 
 // import modules
 include {articDownloadScheme } from '../modules/artic.nf' 
