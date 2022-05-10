@@ -1,7 +1,7 @@
 #!/usr/bin/env nextflow
 
 // enable dsl2
-nextflow.enable.dsl=1
+nextflow.preview.dsl = 2
 
 
 // include modules
